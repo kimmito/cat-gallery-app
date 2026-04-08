@@ -12,7 +12,7 @@ export const appRoutes: AppRoute[] = [
   },
   {
     path: ROUTES.favorites,
-    title: 'Избранные котики',
+    title: 'Любимые котики',
     component: Favorites,
     showInMenu: true,
   },
