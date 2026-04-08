@@ -1,4 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
+import { cn } from '../../../utils/cn';
 
 interface ILayout {
     className?: string;
@@ -6,7 +7,7 @@ interface ILayout {
 
 const Layout: FC<PropsWithChildren<ILayout>> = ({ children, className }) => {
     return (
-        <div className={className}>
+        <div className={cn('mx-15.5', className)}>
             {children}
         </div>
     )
