@@ -4,13 +4,20 @@ import { CatCard } from "./CatCard"
 
 interface ICatGridProps {
   cats: ICatImage[]
+  favoriteIds: Set<string>
+  onToggleFavorite: (cat: ICatImage) => void
 }
 
-export const CatGrid: FC<ICatGridProps> = ({ cats }) => {
+export const CatGrid: FC<ICatGridProps> = ({ cats, favoriteIds, onToggleFavorite }) => {
   return (
     <div className="grid grid-cols-1 justify-center gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[repeat(5,14.0625rem)] lg:gap-x-12 lg:gap-y-13">
       {cats.map((cat) => (
-        <CatCard key={cat.id} cat={cat} />
+        <CatCard
+          key={cat.id}
+          cat={cat}
+          isFavorite={favoriteIds.has(cat.id)}
+          onToggleFavorite={onToggleFavorite}
+        />
       ))}
     </div>
   )
