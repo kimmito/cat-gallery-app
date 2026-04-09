@@ -22,6 +22,7 @@ export const CatCard: FC<ICatCardProps> = ({ cat, isFavorite, onToggleFavorite }
       <button
         type="button"
         aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
+        aria-pressed={isFavorite}
         onClick={() => onToggleFavorite(cat)}
         className={cn(
           "group/heart absolute right-6 bottom-6 cursor-pointer opacity-0 transition-opacity",
