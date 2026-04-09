@@ -39,12 +39,14 @@ export const getCats = async ({ limit, page }: IGetCatsParams = {}): Promise<ICa
   }
 
   const batchCount = Math.ceil(requestedLimit / MAX_LIMIT_WITHOUT_KEY);
+  const apiPageOffset = requestedPage * batchCount;
+
   const batches = await Promise.all(
     Array.from({ length: batchCount }, (_, batchIndex) => {
       const batchLimit = Math.min(MAX_LIMIT_WITHOUT_KEY, requestedLimit - batchIndex * MAX_LIMIT_WITHOUT_KEY);
       return fetchCatsBatch({
         limit: batchLimit,
-        page: requestedPage + batchIndex,
+        page: apiPageOffset + batchIndex,
       });
     })
   );
